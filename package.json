@@ -27,7 +27,8 @@
   },
   "peerDependencies": {
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "scratch-storage": "git://github.com/groklearning/scratch-storage.git#DEV-179-scratch-storage-helper"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -97,7 +98,7 @@
     "react-modal": "3.9.1",
     "react-popover": "0.5.10",
     "react-redux": "5.0.7",
-    "react-responsive": "5.0.0",
+    "react-responsive": "^4.1.0",
     "react-style-proptype": "3.2.2",
     "react-tabs": "2.3.0",
     "react-test-renderer": "16.2.0",
@@ -108,8 +109,8 @@
     "redux-throttle": "0.1.1",
     "rimraf": "^2.6.1",
     "scratch-audio": "0.1.0-prerelease.20190925183642",
-    "scratch-l10n": "3.6.20191210224141",
     "scratch-blocks": "0.1.0-prerelease.1574180945",
+    "scratch-l10n": "3.6.20191210224141",
     "scratch-paint": "0.2.0-prerelease.20191217213717",
     "scratch-render": "0.1.0-prerelease.20191217212645",
     "scratch-storage": "git://github.com/groklearning/scratch-storage.git#DEV-179-scratch-storage-helper",
@@ -141,5 +142,8 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/test/__mocks__/styleMock.js"
     }
+  },
+  "dependencies": {
+    "react-intl-redux": "^0.7.0"
   }
 }

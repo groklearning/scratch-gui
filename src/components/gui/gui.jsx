@@ -199,7 +199,8 @@ const GUIComponent = props => {
                         onRequestClose={onRequestCloseBackdropLibrary}
                     />
                 ) : null}
-                <MenuBar
+                {/* Grok wants to hide the menubar - would be nice if this was configurable in future
+                    <MenuBar
                     accountNavOpen={accountNavOpen}
                     authorId={authorId}
                     authorThumbnailUrl={authorThumbnailUrl}
@@ -227,7 +228,7 @@ const GUIComponent = props => {
                     onSeeCommunity={onSeeCommunity}
                     onShare={onShare}
                     onToggleLoginOpen={onToggleLoginOpen}
-                />
+                /> */}
                 <Box className={styles.bodyWrapper}>
                     <Box className={styles.flexWrapper}>
                         <Box className={styles.editorWrapper}>
