@@ -28,7 +28,7 @@
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "scratch-storage": "git://github.com/groklearning/scratch-storage.git#DEV-179-scratch-storage-helper"
+    "scratch-storage": "git://github.com/groklearning/scratch-storage.git#grok-release-17-01-2020"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -113,7 +113,7 @@
     "scratch-l10n": "3.6.20191210224141",
     "scratch-paint": "0.2.0-prerelease.20191217213717",
     "scratch-render": "0.1.0-prerelease.20191217212645",
-    "scratch-storage": "git://github.com/groklearning/scratch-storage.git#DEV-179-scratch-storage-helper",
+    "scratch-storage": "git://github.com/groklearning/scratch-storage.git#grok-release-17-01-2020",
     "scratch-svg-renderer": "0.2.0-prerelease.20191217211338",
     "scratch-vm": "0.2.0-prerelease.20191119203901",
     "selenium-webdriver": "3.6.0",
@@ -143,7 +143,5 @@
       "\\.(css|less)$": "<rootDir>/test/__mocks__/styleMock.js"
     }
   },
-  "dependencies": {
-    "react-intl-redux": "^0.7.0"
-  }
+  "dependencies": {}
 }
