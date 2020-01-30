@@ -72,6 +72,10 @@ const ProjectSaverHOC = function (WrappedComponent) {
             }
             if (!this.props.isLoading && prevProps.isLoading) {
                 this.reportTelemetryEvent('projectDidLoad');
+
+                // Clear timeout after loading a project
+                this.clearAutoSaveTimeout();
+                this.scheduleAutoSave();
             }
 
             if (this.props.projectChanged && !prevProps.projectChanged) {
@@ -147,6 +151,10 @@ const ProjectSaverHOC = function (WrappedComponent) {
         tryToAutoSave () {
             if (this.props.projectChanged && this.props.isShowingSaveable) {
                 this.props.onAutoUpdateProject();
+            } else {
+                // If we fail to autosave we should clear the timeout
+                // So it doesn't get stuck forever
+                this.clearAutoSaveTimeout();
             }
         }
         isShowingCreatable (props) {
@@ -244,7 +252,20 @@ const ProjectSaverHOC = function (WrappedComponent) {
                     })
                 )
             )
-                .then(() => this.props.onUpdateProjectData(projectId, savedVMState, requestParams))
+                .then(() => {
+                    const assetType = storage.AssetType.Project;
+                    const dataFormat = storage.DataFormat.JSON;
+                    return storage.store(assetType, dataFormat, savedVMState, projectId);
+
+                    // Grok: originally this used save-project-to-server.js
+                    // Which appears to have a bunch of custom saving specific to Scratch
+                    // We've instead used the standard storage system so our
+                    // iframe storage system can hook in here.
+                    // TODO: Figure out a way to do Scratch's custom saving for projects
+                    // using their standard storage system.
+                    //
+                    // this.props.onUpdateProjectData(projectId, savedVMState, requestParams);
+                })
                 .then(response => {
                     this.props.onSetProjectUnchanged();
                     const id = response.id.toString();
