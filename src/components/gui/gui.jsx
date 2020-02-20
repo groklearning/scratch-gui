@@ -10,6 +10,8 @@ import tabStyles from 'react-tabs/style/react-tabs.css';
 import VM from 'scratch-vm';
 import Renderer from 'scratch-render';
 
+import GrokSaveMenu from '../grok/save-menu.jsx';
+
 import Blocks from '../../containers/blocks.jsx';
 import CostumeTab from '../../containers/costume-tab.jsx';
 import TargetPane from '../../containers/target-pane.jsx';
@@ -109,12 +111,15 @@ const GUIComponent = props => {
         onTelemetryModalOptIn,
         onTelemetryModalOptOut,
         showComingSoon,
+        hideMenuBar,
         soundsTabVisible,
         stageSizeMode,
         targetIsStage,
         telemetryModalVisible,
         tipsLibraryVisible,
         vm,
+        grokShouldHideLoad,
+        grokShouldHideSave,
         ...componentProps
     } = omit(props, 'dispatch');
     if (children) {
@@ -218,6 +223,7 @@ const GUIComponent = props => {
                     logo={logo}
                     renderLogin={renderLogin}
                     showComingSoon={showComingSoon}
+                    hideMenuBar={hideMenuBar}
                     onClickAccountNav={onClickAccountNav}
                     onClickLogo={onClickLogo}
                     onCloseAccountNav={onCloseAccountNav}
@@ -228,7 +234,12 @@ const GUIComponent = props => {
                     onShare={onShare}
                     onToggleLoginOpen={onToggleLoginOpen}
                 />
-                <Box className={styles.bodyWrapper}>
+                <Box
+                    className={classNames(
+                        styles.bodyWrapper,
+                        {[styles.bodyWrapperHiddenMenu]: hideMenuBar}
+                    )}
+                >
                     <Box className={styles.flexWrapper}>
                         <Box className={styles.editorWrapper}>
                             <Tabs
@@ -288,6 +299,10 @@ const GUIComponent = props => {
                                         />
                                     </Tab>
                                 </TabList>
+                                <GrokSaveMenu
+                                    grokShouldHideLoad={grokShouldHideLoad}
+                                    grokShouldHideSave={grokShouldHideSave}
+                                />
                                 <TabPanel className={tabClassNames.tabPanel}>
                                     <Box className={styles.blocksWrapper}>
                                         <Blocks
